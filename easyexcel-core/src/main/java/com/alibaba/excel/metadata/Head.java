@@ -2,6 +2,7 @@ package com.alibaba.excel.metadata;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.alibaba.excel.exception.ExcelGenerateException;
@@ -66,11 +67,19 @@ public class Head {
      */
     private FontProperty headFontProperty;
 
+    private List<String> aliases;
+
     public Head(Integer columnIndex, Field field, String fieldName, List<String> headNameList, Boolean forceIndex,
-        Boolean forceName) {
+                Boolean forceName) {
+        this(columnIndex, field, fieldName, headNameList, new String[]{}, forceIndex, forceName);
+    }
+
+    public Head(Integer columnIndex, Field field, String fieldName, List<String> headNameList, String[] aliases, Boolean forceIndex,
+                Boolean forceName) {
         this.columnIndex = columnIndex;
         this.field = field;
         this.fieldName = fieldName;
+        this.aliases = Arrays.asList(aliases);
         if (headNameList == null) {
             this.headNameList = new ArrayList<>();
         } else {
@@ -82,6 +91,6 @@ public class Head {
             }
         }
         this.forceIndex = forceIndex;
-        this.forceName = forceName;
+        this.forceName = forceName || aliases.length > 0;
     }
 }
