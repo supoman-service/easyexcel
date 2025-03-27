@@ -40,4 +40,6 @@ public class FieldWrapper {
      * @see ExcelProperty
      */
     private String[] heads;
+
+    private String[] aliases;
 }

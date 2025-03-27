@@ -65,4 +65,6 @@ public @interface ExcelProperty {
      */
     @Deprecated
     String format() default "";
+
+    String[] aliases() default {""};
 }

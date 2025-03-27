@@ -136,7 +136,7 @@ public class ExcelHeadProperty {
                 Collections.addAll(tmpHeadList, field.getHeads());
             }
         }
-        Head head = new Head(index, field.getField(), field.getFieldName(), tmpHeadList, forceIndex, !notForceName);
+        Head head = new Head(index, field.getField(), field.getFieldName(), tmpHeadList, field.getAliases(), forceIndex, !notForceName);
         headMap.put(index, head);
     }
 
